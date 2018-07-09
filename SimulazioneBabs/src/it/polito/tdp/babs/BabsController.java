@@ -1,10 +1,12 @@
 package it.polito.tdp.babs;
 
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.babs.model.Model;
+import it.polito.tdp.babs.model.StazTot;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -36,6 +38,24 @@ public class BabsController {
 
 	@FXML
 	void doContaTrip(ActionEvent event) {
+		
+		txtResult.clear();
+		
+		try {
+		
+		LocalDate data = pickData.getValue();
+		
+		for (StazTot s : model.contaTrip(data) )
+		
+		txtResult.appendText(s+"\n\n");
+		
+		}
+		catch(RuntimeException e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		
 
 	}
 
